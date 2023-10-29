@@ -9,9 +9,10 @@ interface AppState {
   rickResponse: CharacterResponseInterface | null;
   isLoading: boolean;
 }
+interface AppProps {}
 
-class App extends Component<AppState, AppState> {
-  constructor(props: AppState) {
+class App extends Component<AppProps, AppState> {
+  constructor(props: AppProps) {
     super(props);
     this.state = {
       rickResponse: null,
