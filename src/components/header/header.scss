@@ -1,0 +1,17 @@
+.header{
+  display: flex;
+  height: 50px;
+  gap: 10px;
+  &__input{
+    flex: 1;
+    padding: 0 15px;
+  }
+  &__button{
+    min-width: 100px;
+    cursor: pointer;
+  }
+  &__input,&__button{
+    font-size: 20px;
+  }
+
+}
