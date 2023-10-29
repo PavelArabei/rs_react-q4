@@ -1,14 +1,14 @@
 import './App.scss';
+import ItemList from './components/item-list/item-list.tsx';
 import Header from './components/header/header.tsx';
 import Footer from './components/footer/footer.tsx';
-import MainPage from './pages/main/main-page.tsx';
 
 function App() {
   return (
     <>
       <Header />
       <main className={'main'}>
-        <MainPage />
+        <ItemList />
       </main>
       <Footer />
     </>
