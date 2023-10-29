@@ -9,7 +9,7 @@ export class RickApiServices {
       );
       return response.data;
     } catch (error) {
-      console.error('Произошла ошибка при выполнении GET-запроса:', error);
+      return;
     }
   }
 }

@@ -3,9 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { RickApiServices } from '../../services/rick-api/rick-api.services.ts';
 import { CharacterResponseInterface } from '../../services/rick-api/rick-api.models.ts';
 
-const Header = () => {
+interface HeaderProps {
+  setResponseCB: (res: CharacterResponseInterface | null) => void;
+  setIsLoadingCB: (isLoading: boolean) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ setResponseCB, setIsLoadingCB }) => {
   const [searchText, setSearchText] = useState<string>('');
-  const [response, setResponse] = useState<CharacterResponseInterface | null>(null);
 
   useEffect(() => {
     const savedSearchText = localStorage.getItem('searchTerm');
@@ -20,10 +24,17 @@ const Header = () => {
     if (searchText) {
       localStorage.setItem('searchTerm', searchText);
     }
-
+    setIsLoadingCB(true);
     const response: CharacterResponseInterface | undefined =
       await RickApiServices.characterSearch(searchText);
-    if (response) setResponse(response);
+
+    if (response) {
+      setResponseCB(response);
+    } else {
+      setResponseCB(null);
+    }
+
+    setIsLoadingCB(false);
   };
 
   return (
@@ -37,8 +48,6 @@ const Header = () => {
       <button onClick={handleSearch} className={'header__button'}>
         click me!
       </button>
-
-      <p>{JSON.stringify(response)}</p>
     </header>
   );
 };
