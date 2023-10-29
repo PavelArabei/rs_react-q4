@@ -38,17 +38,20 @@ const Header: React.FC<HeaderProps> = ({ setResponseCB, setIsLoadingCB }) => {
   };
 
   return (
-    <header className={'header'}>
-      <input
-        value={searchText}
-        type="text"
-        onChange={handleSearchChange}
-        className={'header__input'}
-      />
-      <button onClick={handleSearch} className={'header__button'}>
-        click me!
-      </button>
-    </header>
+    <>
+      <h1>RICK AND MORTY</h1>
+      <header className={'header'}>
+        <input
+          value={searchText}
+          type="text"
+          onChange={handleSearchChange}
+          className={'header__input'}
+        />
+        <button onClick={handleSearch} className={'header__button'}>
+          click me!
+        </button>
+      </header>
+    </>
   );
 };
 
