@@ -1,0 +1,11 @@
+.header{
+  display: flex;
+  height: 50px;
+  gap: 10px;
+  &__input{
+    flex: 1;
+  }
+  &__button{
+    min-width: 100px;
+  }
+}
