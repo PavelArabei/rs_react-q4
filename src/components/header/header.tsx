@@ -1,5 +1,5 @@
 import './header.scss';
-import React, { useEffect, useState } from 'react';
+import React, { Component } from 'react';
 import { RickApiServices } from '../../services/rick-api/rick-api.services.ts';
 import { CharacterResponseInterface } from '../../services/rick-api/rick-api.models.ts';
 
@@ -8,23 +8,38 @@ interface HeaderProps {
   setIsLoadingCB: (isLoading: boolean) => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ setResponseCB, setIsLoadingCB }) => {
-  const [searchText, setSearchText] = useState<string>('');
+interface HeaderState {
+  searchText: string;
+}
 
-  useEffect(() => {
+class Header extends Component<HeaderProps, HeaderState> {
+  constructor(props: HeaderProps) {
+    super(props);
+
+    this.state = {
+      searchText: '',
+    };
+  }
+
+  componentDidMount() {
     const savedSearchText = localStorage.getItem('searchTerm');
-    if (savedSearchText) setSearchText(savedSearchText);
-  }, []);
+    if (savedSearchText) this.setState({ searchText: savedSearchText });
+  }
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setSearchText(() => e.target.value.trim());
+  handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    this.setState({ searchText: e.target.value.trim() });
   };
 
-  const handleSearch = async () => {
+  handleSearch = async () => {
+    const { searchText } = this.state;
+    const { setResponseCB, setIsLoadingCB } = this.props;
+
     if (searchText) {
       localStorage.setItem('searchTerm', searchText);
     }
+
     setIsLoadingCB(true);
+
     const response: CharacterResponseInterface | undefined =
       await RickApiServices.characterSearch(searchText);
 
@@ -37,22 +52,26 @@ const Header: React.FC<HeaderProps> = ({ setResponseCB, setIsLoadingCB }) => {
     setIsLoadingCB(false);
   };
 
-  return (
-    <>
-      <h1>RICK AND MORTY</h1>
-      <header className={'header'}>
-        <input
-          value={searchText}
-          type="text"
-          onChange={handleSearchChange}
-          className={'header__input'}
-        />
-        <button onClick={handleSearch} className={'header__button'}>
-          click me!
-        </button>
-      </header>
-    </>
-  );
-};
+  render() {
+    const { searchText } = this.state;
+
+    return (
+      <>
+        <h1>RICK AND MORTY</h1>
+        <header className={'header'}>
+          <input
+            value={searchText}
+            type="text"
+            onChange={this.handleSearchChange}
+            className={'header__input'}
+          />
+          <button onClick={this.handleSearch} className={'header__button'}>
+            click me!
+          </button>
+        </header>
+      </>
+    );
+  }
+}
 
 export default Header;
