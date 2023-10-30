@@ -19,7 +19,7 @@ class App extends Component<AppProps, AppState> {
       isLoading: false,
     };
   }
-
+//
   setResponseCB = (res: CharacterResponseInterface | null) => {
     this.setState({ rickResponse: res });
   };
