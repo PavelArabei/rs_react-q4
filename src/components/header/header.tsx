@@ -26,6 +26,7 @@ class Header extends Component<HeaderProps, HeaderState> {
   componentDidMount() {
     const savedSearchText = localStorage.getItem('searchTerm');
     if (savedSearchText) this.setState({ searchText: savedSearchText });
+    this.handleSearch();
   }
 
   handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
