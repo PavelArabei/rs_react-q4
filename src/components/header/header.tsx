@@ -10,6 +10,7 @@ interface HeaderProps {
 
 interface HeaderState {
   searchText: string;
+  error: boolean;
 }
 
 class Header extends Component<HeaderProps, HeaderState> {
@@ -18,6 +19,7 @@ class Header extends Component<HeaderProps, HeaderState> {
 
     this.state = {
       searchText: '',
+      error: false,
     };
   }
 
@@ -52,11 +54,21 @@ class Header extends Component<HeaderProps, HeaderState> {
     setIsLoadingCB(false);
   };
 
+  setError = () => {
+    this.setState({ error: true });
+    console.log(this.state);
+  };
+
   render() {
     const { searchText } = this.state;
-
+    if (this.state.error) {
+      throw new Error('Something go wrong');
+    }
     return (
       <>
+        <button className={'throw-error-button'} onClick={this.setError}>
+          BIG BAD BUTTON TO THROW ERROR
+        </button>
         <h1>RICK AND MORTY</h1>
         <header className={'header'}>
           <input

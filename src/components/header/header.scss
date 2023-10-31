@@ -1,19 +1,24 @@
-.header{
+.header {
   display: flex;
   height: 50px;
   margin-bottom: 20px;
   gap: 10px;
-  &__input{
+  &__input {
     height: 100%;
     flex: 1;
     padding: 0 15px;
   }
-  &__button{
+  &__button {
     min-width: 100px;
     cursor: pointer;
   }
-  &__input,&__button{
+  &__input,
+  &__button {
     font-size: 20px;
   }
+}
 
+.throw-error-button {
+  font-size: 36px;
+  color: #747bff;
 }
