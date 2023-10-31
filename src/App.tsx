@@ -19,7 +19,7 @@ class App extends Component<AppProps, AppState> {
       isLoading: false,
     };
   }
-//
+  //
   setResponseCB = (res: CharacterResponseInterface | null) => {
     this.setState({ rickResponse: res });
   };
@@ -33,7 +33,10 @@ class App extends Component<AppProps, AppState> {
 
     return (
       <div>
-        <Header setResponseCB={this.setResponseCB} setIsLoadingCB={this.setIsLoadingCB} />
+        <Header
+          setResponseCB={this.setResponseCB}
+          setIsLoadingCB={this.setIsLoadingCB}
+        />
         <main className="main">
           {isLoading ? 'loading' : <MainPage rickResponse={rickResponse} />}
         </main>
