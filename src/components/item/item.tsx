@@ -1,6 +1,6 @@
-import './item.scss';
 import { CharacterInterface } from '../../services/rick-api/rick-api.models.ts';
 import React from 'react';
+import s from './item.module.scss';
 
 interface ItemListProps {
   item: CharacterInterface;
@@ -8,9 +8,9 @@ interface ItemListProps {
 
 const Item: React.FC<ItemListProps> = ({ item }) => {
   return (
-    <div className="item">
+    <div className={s.item}>
       <h4>{item.name}</h4>
-      <img className="item__img" src={item.image} alt={item.name} />
+      <img className={s.item__img} src={item.image} alt={item.name} />
       <p>Gender: {item.gender}</p>
     </div>
   );
