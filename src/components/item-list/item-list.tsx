@@ -10,8 +10,10 @@ interface ItemListProps {
 const ItemList: React.FC<ItemListProps> = ({ rickResponse }) => {
   const itemsArray = rickResponse.results;
 
+  function goToMainPage() {}
+
   return (
-    <div className={s.item_list}>
+    <div onClick={goToMainPage} className={s.item_list}>
       {itemsArray.map((item) => (
         <Item item={item} key={item.id} />
       ))}

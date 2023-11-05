@@ -1,7 +1,7 @@
 .item {
   height: auto;
   border: 3px solid black;
-  padding: 5px;
+  padding: 5px 0px 25px;
   font-size: 20px;
 
   &__img {
@@ -9,4 +9,14 @@
     height: 150px;
     object-fit: cover;
   }
+
+  &__button {
+    border: 2px solid black;
+    padding: 4px;
+    text-decoration: none;
+    color: rebeccapurple;
+  }
+}
+.active {
+  background-color: red;
 }

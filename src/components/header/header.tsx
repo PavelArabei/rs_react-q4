@@ -15,7 +15,6 @@ const Header: React.FC<HeaderProps> = ({ setResponseCB, setIsLoadingCB }) => {
   useEffect(() => {
     const savedSearchText = localStorage.getItem('searchTerm');
     if (savedSearchText) setSearchText(savedSearchText);
-    console.log(s);
     handleSearch().then();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -53,9 +52,6 @@ const Header: React.FC<HeaderProps> = ({ setResponseCB, setIsLoadingCB }) => {
   }
   return (
     <>
-      <button className={s.throw_err} onClick={handleError}>
-        BIG BAD BUTTON TO THROW ERROR
-      </button>
       <h1>RICK AND MORTY</h1>
       <header className={s.header}>
         <input

@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  gap: 10px;
+  margin: 5px;
+  font-size: 32px;
+}
+.linkButton {
+  display: block;
+  width: 50px;
+  border: 1px solid black;
+  text-decoration: none;
+  color: darkseagreen;
+}
+.active {
+  background-color: darkslategrey;
+}
+.linkContainer {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}

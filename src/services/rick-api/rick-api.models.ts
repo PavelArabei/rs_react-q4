@@ -18,12 +18,14 @@ export interface CharacterInterface {
   url: string;
   created: string;
 }
+
+export interface CharacterInfo {
+  count: number;
+  pages: number;
+  next: string | null;
+  prev: string | null;
+}
 export interface CharacterResponseInterface {
-  info: {
-    count: number;
-    pages: number;
-    next: string | null;
-    prev: string | null;
-  };
+  info: CharacterInfo;
   results: CharacterInterface[];
 }

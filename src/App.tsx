@@ -10,6 +10,7 @@ interface AppProps {}
 const App: React.FC<AppProps> = () => {
   const [rickResponse, setRickResponse] =
     useState<CharacterResponseInterface | null>(null);
+
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const setResponseCB = (res: CharacterResponseInterface | null) => {
